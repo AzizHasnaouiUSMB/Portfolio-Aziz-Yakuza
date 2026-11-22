@@ -270,6 +270,16 @@ p { margin: 0 0 1em; }
   .legal { display: none; }
 }
 
+/* ---------- Fondu entre les pages ---------- */
+/* à l'arrivée : la page passe de transparente à visible (0,3 s) */
+body { animation: apparition 0.3s ease-out; }
+@keyframes apparition {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+/* au départ : transition.js ajoute la classe "sortie" avant de changer de page */
+body.sortie { opacity: 0; transition: opacity 0.2s ease-in; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects - Abdelaziz Hasnaoui</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="inner">
+
+  <!-- vidéo de fond : fixe, assombrie et floue (voir style.css) -->
+  <video class="bg-video" autoplay muted loop playsinline poster="assets/video/poster.jpg" aria-hidden="true">
+    <source src="assets/video/kamurocho-loop.mp4" type="video/mp4">
+  </video>
+
+  <!-- barre du haut -->
+  <header class="topbar">
+    <a class="back" href="index.html">&larr; Back to Title</a>
+    <nav aria-label="Pages">
+      <a href="about.html">About me</a>
+      <a href="skills.html">Skills</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html" aria-current="page">Projects</a>
+      <a href="contact.html">Contact</a>
+      <a href="cv.html">CV</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="page-head">
+      <h1>Projects</h1>
+      <p>Substories log</p>
+    </div>
+
+    <div class="log">
+      <!-- à gauche : les filtres et la liste des projets -->
+      <section class="panel log-list">
+        <h2 class="panel-title">Substories</h2>
+
+        <div class="filters" role="group" aria-label="Filter projects by technology">
+          <button type="button" class="filter selected" data-filter="all">All (4)</button>
+          <button type="button" class="filter" data-filter="data">Data and SQL (2)</button>
+          <button type="button" class="filter" data-filter="csharp">C# / WPF (2)</button>
+          <button type="button" class="filter" data-filter="web">Web (2)</button>
+        </div>
+
+        <ul class="log-items">
+          <li>
+            <button type="button" class="log-item selected" data-id="ecommerce" data-tags="data web">
+              <span class="log-number">01</span>
+              <span class="log-text"><span class="log-title">Tesla e-commerce website and information system redesign</span><span class="log-status">In progress &middot; Oct 2026 - Jan 2027</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="log-item" data-id="gym" data-tags="data csharp">
+              <span class="log-number">02</span>
+              <span class="log-text"><span class="log-title">BasicFit: gym management application</span><span class="log-status">Completed &middot; May - Jun 2026</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="log-item" data-id="crown" data-tags="csharp">
+              <span class="log-number">03</span>
+              <span class="log-text"><span class="log-title">Video game "Crown Survivor"</span><span class="log-status">Completed &middot; Dec 2025 (2 weeks)</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="log-item" data-id="site" data-tags="web">
+              <span class="log-number">04</span>
+              <span class="log-text"><span class="log-title">This portfolio website</span><span class="log-status">You are here &middot; Autumn 2026</span></span>
+            </button>
+          </li>
+        </ul>
+      </section>
+
+      <!-- à droite : la fiche du projet sélectionné (une seule est visible à la fois) -->
+      <section class="panel" aria-live="polite">
+        <article class="project" id="project-ecommerce">
+          <p class="detail-number">Substory 01 &middot; Case study</p>
+          <h2 class="detail-title">Tesla e-commerce website and information system redesign</h2>
+          <p class="muted">Oct 2026 - Jan 2027 &middot; In progress</p>
+
+          <!-- Pour ajouter une capture d'écran, enlever les 2 signes de commentaire autour de la ligne suivante
+          <figure class="screenshot"><img src="assets/images/mon-image.png" alt="Screenshot of Tesla e-commerce website and information system redesign"></figure>
+          -->
+
+          <dl class="facts">
+            <div class="fact"><dt>Type of work</dt><dd>University project (SAÉ), team of 5</dd></div>
+            <div class="fact"><dt>Context</dt><dd>BUT2 team project at the University of Savoy / IUT Annecy.</dd></div>
+            <div class="fact"><dt>Goal</dt><dd>Redesign an information system and its e-commerce website, from the data model to the reporting.</dd></div>
+            <div class="fact"><dt>Organisation</dt><dd>Scrum method on Azure DevOps.</dd></div>
+          </dl>
+
+          <h3 class="detail-sub">What I did</h3>
+          <ul class="bullets">
+            <li>Designed the relational database of the site with SQL and PostgreSQL</li>
+            <li>Built the e-commerce website, connecting external APIs and respecting GDPR requirements</li>
+            <li>Created Power BI reports to follow and analyse sales</li>
+          </ul>
+
+          <h3 class="detail-sub">Technologies</h3>
+          <ul class="techs">
+            <li>SQL</li>
+            <li>PostgreSQL</li>
+            <li>Power BI</li>
+            <li>External APIs</li>
+            <li>GDPR</li>
+            <li>Scrum</li>
+            <li>Azure DevOps</li>
+          </ul>
+
+          <p class="muted">The source code is not on GitHub yet (project in progress).</p>
+        </article>
+
+        <article class="project" id="project-gym" hidden>
+          <p class="detail-number">Substory 02</p>
+          <h2 class="detail-title">BasicFit: gym management application</h2>
+          <p class="muted">May - Jun 2026 &middot; Completed</p>
+
+          <figure class="screenshot"><img src="assets/images/basicfit.png" alt="Screenshot of the BasicFit application: login screen"></figure>
+
+          <dl class="facts">
+            <div class="fact"><dt>Type of work</dt><dd>University project (SAÉ), team of 4</dd></div>
+            <div class="fact"><dt>Context</dt><dd>Redesign of a gym management application for a fictitious client.</dd></div>
+            <div class="fact"><dt>Goal</dt><dd>Give employees and coaches a desktop application connected to a database.</dd></div>
+            <div class="fact"><dt>Organisation</dt><dd>Front-end and back-end tasks shared within a team of 4 students.</dd></div>
+          </dl>
+
+          <h3 class="detail-sub">What I did</h3>
+          <ul class="bullets">
+            <li>Designed the database and the interfaces for employees and coaches</li>
+            <li>Took the lead on the user interface (C# / WPF)</li>
+            <li>Connected the application to the PostgreSQL database of the IUT</li>
+          </ul>
+
+          <h3 class="detail-sub">Technologies</h3>
+          <ul class="techs">
+            <li>C#</li>
+            <li>WPF</li>
+            <li>PostgreSQL</li>
+            <li>SQL</li>
+          </ul>
+
+          <p><a class="button" href="https://github.com/SawaHaki0/BasicFit_SAWADOGO-THOMAS-FORNES-HASNAOUI" target="_blank" rel="noopener">See on GitHub</a></p>
+        </article>
+
+        <article class="project" id="project-crown" hidden>
+          <p class="detail-number">Substory 03</p>
+          <h2 class="detail-title">Video game "Crown Survivor"</h2>
+          <p class="muted">Dec 2025 (2 weeks) &middot; Completed</p>
+
+          <figure class="screenshot"><img src="assets/images/crown-survivor.png" alt="Screenshot of the game Crown Survivor: a wave in progress"></figure>
+
+          <dl class="facts">
+            <div class="fact"><dt>Type of work</dt><dd>University project (SAÉ), pair</dd></div>
+            <div class="fact"><dt>Context</dt><dd>Two-week university project in pairs, for a fictitious client.</dd></div>
+            <div class="fact"><dt>Goal</dt><dd>Deliver a playable survival game.</dd></div>
+            <div class="fact"><dt>Organisation</dt><dd>Work shared with my partner to deliver on time.</dd></div>
+          </dl>
+
+          <h3 class="detail-sub">What I did</h3>
+          <ul class="bullets">
+            <li>Wrote most of the game code, including the gameplay logic</li>
+            <li>Programmed the game in C# with a WPF interface</li>
+          </ul>
+
+          <h3 class="detail-sub">Technologies</h3>
+          <ul class="techs">
+            <li>C#</li>
+            <li>WPF</li>
+            <li>Game logic</li>
+          </ul>
+
+          <p><a class="button" href="https://github.com/AzizHasnaouiUSMB/CrownSurvivor" target="_blank" rel="noopener">See on GitHub</a></p>
+        </article>
+
+        <article class="project" id="project-site" hidden>
+          <p class="detail-number">Substory 04</p>
+          <h2 class="detail-title">This portfolio website</h2>
+          <p class="muted">Autumn 2026 &middot; You are here</p>
+
+          <figure class="screenshot"><img src="assets/images/portfolio-site.png" alt="Screenshot of this portfolio: the title screen"></figure>
+
+          <dl class="facts">
+            <div class="fact"><dt>Type of work</dt><dd>Individual project, English course R3.12</dd></div>
+            <div class="fact"><dt>Context</dt><dd>Portfolio required by the professional English course (R3.12) at the IUT Annecy.</dd></div>
+            <div class="fact"><dt>Goal</dt><dd>Present my CV and my projects in a memorable way, with a night-city theme inspired by the Yakuza / Like a Dragon games.</dd></div>
+            <div class="fact"><dt>Organisation</dt><dd>Individual work, static site without any framework.</dd></div>
+          </dl>
+
+          <h3 class="detail-sub">What I did</h3>
+          <ul class="bullets">
+            <li>Designed the neon night-city interface (animated rain, skyline, glowing signs)</li>
+            <li>Wrote the project filters, the case-file windows and the PDF CV viewer in plain JavaScript</li>
+            <li>Made the layout responsive and keyboard-accessible</li>
+          </ul>
+
+          <h3 class="detail-sub">Technologies</h3>
+          <ul class="techs">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+          </ul>
+
+          <p><a class="button" href="https://github.com/AzizHasnaouiUSMB" target="_blank" rel="noopener">See on GitHub</a></p>
+        </article>
+      </section>
+    </div>
+
+    <p class="page-foot">Unofficial fan tribute made for a school project (R3.12, IUT Annecy). Not affiliated with SEGA.</p>
+  </main>
+
+  <script src="video.js"></script>
+  <script src="projects.js"></script>
+</body>
+</html>

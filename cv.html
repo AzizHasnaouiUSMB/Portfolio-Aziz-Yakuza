@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV - Abdelaziz Hasnaoui</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="inner">
+
+  <!-- vidéo de fond : fixe, assombrie et floue (voir style.css) -->
+  <video class="bg-video" autoplay muted loop playsinline poster="assets/video/poster.jpg" aria-hidden="true">
+    <source src="assets/video/kamurocho-loop.mp4" type="video/mp4">
+  </video>
+
+  <!-- barre du haut -->
+  <header class="topbar">
+    <a class="back" href="index.html">&larr; Back to Title</a>
+    <nav aria-label="Pages">
+      <a href="about.html">About me</a>
+      <a href="skills.html">Skills</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+      <a href="cv.html" aria-current="page">CV</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="page-head">
+      <h1>CV</h1>
+      <p>Curriculum vitae</p>
+    </div>
+
+    <section class="panel">
+      <p class="cv-buttons">
+        <a class="button" href="assets/docs/Cv_Abdelaziz_International7.pdf" download>Download the PDF</a>
+        <a class="button" href="assets/docs/Cv_Abdelaziz_International7.pdf" target="_blank" rel="noopener">Open in a new tab</a>
+      </p>
+      <object class="cv-frame" data="assets/docs/Cv_Abdelaziz_International7.pdf" type="application/pdf" aria-label="Preview of the CV">
+        <p>Your browser cannot show the PDF here. Use the download button.</p>
+      </object>
+    </section>
+
+    <p class="page-foot">Unofficial fan tribute made for a school project (R3.12, IUT Annecy). Not affiliated with SEGA.</p>
+  </main>
+
+  <script src="video.js"></script>
+</body>
+</html>

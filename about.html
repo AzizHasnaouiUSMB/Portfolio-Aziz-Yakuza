@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About me - Abdelaziz Hasnaoui</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="inner">
+
+  <!-- vidéo de fond : fixe, assombrie et floue (voir style.css) -->
+  <video class="bg-video" autoplay muted loop playsinline poster="assets/video/poster.jpg" aria-hidden="true">
+    <source src="assets/video/kamurocho-loop.mp4" type="video/mp4">
+  </video>
+
+  <!-- barre du haut -->
+  <header class="topbar">
+    <a class="back" href="index.html">&larr; Back to Title</a>
+    <nav aria-label="Pages">
+      <a href="about.html" aria-current="page">About me</a>
+      <a href="skills.html">Skills</a>
+      <a href="experience.html">Experience</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+      <a href="cv.html">CV</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <div class="page-head">
+      <h1>About me</h1>
+      <p>Profile</p>
+    </div>
+
+    <div class="two-columns">
+      <!-- colonne de gauche -->
+      <div>
+        <section class="panel">
+          <h2 class="panel-title">Subject file</h2>
+          <dl class="facts">
+            <div class="fact"><dt>Name</dt><dd>Abdelaziz Hasnaoui</dd></div>
+            <div class="fact"><dt>Studies</dt><dd>BUT Informatique, 2nd year (IUT Annecy)</dd></div>
+            <div class="fact"><dt>Track</dt><dd>Data administration, management and exploitation</dd></div>
+            <div class="fact"><dt>Based in</dt><dd>Annecy-le-Vieux / Annemasse, France</dd></div>
+            <div class="fact"><dt>Languages</dt><dd>French, English (B2), Chinese (A1)</dd></div>
+            <div class="fact"><dt>Status</dt><dd>Looking for an internship from 5 April 2027</dd></div>
+          </dl>
+        </section>
+
+        <section class="panel">
+          <h2 class="panel-title">Hobbies and interests</h2>
+          <ul class="rows">
+            <li><strong>Weight training</strong><span>Practising autonomously (self-taught) for two and a half years.</span></li>
+            <li><strong>Video games</strong><span>Passionate about solo and strategy games, playing since the age of 10.</span></li>
+            <li><strong>Cooking</strong><span>Preparing simple and healthy meals every day to support my weight training.</span></li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- colonne de droite -->
+      <div>
+        <section class="panel">
+          <h2 class="panel-title">About me</h2>
+          <div class="text">
+            <p>I am in my second year of the BUT Informatique (Technical Bachelor's Degree in computer science) at the IUT Annecy, on the data administration, management and exploitation track.</p>
+            <p>What I enjoy most is the moment when a table of raw data becomes a clear figure that helps a team make a decision, and I always check my numbers twice.</p>
+            <p>I am looking for an internship of 8 to 12 weeks, starting on 5 April 2027, as a Data Analyst or in Information Systems. In my university projects I designed databases, built Power BI reports and worked in a Scrum team: now I want to apply these skills to real company data.</p>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2 class="panel-title">References</h2>
+          <ul class="rows">
+            <li>
+              <strong>Stéphanie VIBRAC</strong>
+              <span>English Lecturer and International Coordinator</span>
+              <span class="muted">University of Savoy / IUT Annecy, Annecy-le-Vieux, France</span>
+              <a href="mailto:stephanie.vibrac@univ-smb.fr">stephanie.vibrac@univ-smb.fr</a>
+            </li>
+            <li>
+              <strong>Luc DAMAS</strong>
+              <span>Programming Associate Professor</span>
+              <span class="muted">University of Savoy / IUT Annecy, Annecy-le-Vieux, France</span>
+              <a href="mailto:luc.damas@univ-smb.fr">luc.damas@univ-smb.fr</a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <p class="page-foot">Unofficial fan tribute made for a school project (R3.12, IUT Annecy). Not affiliated with SEGA.</p>
+  </main>
+
+  <script src="video.js"></script>
+</body>
+</html>

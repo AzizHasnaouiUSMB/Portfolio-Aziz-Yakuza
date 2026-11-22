@@ -1,0 +1,277 @@
+/* style.css : le style de toutes les pages du site.
+
+   L'idée : un menu de jeu. Des panneaux sombres avec une fine bordure,
+   et le rouge seulement pour ce qui est sélectionné.
+
+   Le fichier est rangé dans cet ordre :
+     1. Polices et couleurs
+     2. Vidéo de fond
+     3. Page d'accueil (index.html)
+     4. Pages internes : barre du haut, titre, panneaux
+     5. Petits éléments : fiche profil, listes, boutons
+     6. Téléphone (petits écrans)
+*/
+
+/* ---------- 1. Polices, couleurs et base ---------- */
+@font-face { font-family: "Edo";   src: url(assets/fonts/edosz.ttf) format("truetype"); font-display: swap; }
+@font-face { font-family: "Bebas"; src: url(assets/fonts/bebas-neue-latin-400-normal.woff2) format("woff2"); font-display: swap; }
+@font-face { font-family: "Barlow"; src: url(assets/fonts/barlow-latin-400-normal.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url(assets/fonts/barlow-latin-600-normal.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Barlow"; src: url(assets/fonts/barlow-latin-700-normal.woff2) format("woff2"); font-weight: 700; font-display: swap; }
+
+:root {
+  --red: #d6202e;                    /* réservé à l'élément actif / sélectionné */
+  --text: #ececf0;
+  --muted: #a3a3b0;
+  --line: rgba(255, 255, 255, 0.2);  /* fines bordures */
+  --line-soft: rgba(255, 255, 255, 0.12);
+  --panel: rgba(10, 10, 14, 0.88);   /* panneaux semi-transparents */
+
+  --font-title: "Edo", Impact, sans-serif;
+  --font-label: "Bebas", "Arial Narrow", sans-serif;
+  --font-body: "Barlow", "Segoe UI", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  background: #000;
+  color: var(--text);
+  font: 400 18px/1.6 var(--font-body);
+}
+a { color: var(--text); }
+a:hover { color: #fff; }
+p { margin: 0 0 1em; }
+:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.muted { color: var(--muted); }
+
+
+/* ---------- 2. Vidéo de fond ---------- */
+.bg-video {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: -2;
+}
+/* pages internes : très sombre et légèrement floue */
+.inner .bg-video {
+  filter: blur(6px) brightness(0.32);
+  transform: scale(1.06);          /* cache les bords flous */
+}
+
+
+/* ---------- 3. Écran titre (index.html) ---------- */
+.title-screen { height: 100vh; overflow: hidden; }
+.title-screen .bg-video { filter: brightness(0.8); }
+
+/* dégradé sombre à gauche pour bien lire le menu */
+.title-shade {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 32%, rgba(0, 0, 0, 0.15) 65%, rgba(0, 0, 0, 0.35) 100%),
+    radial-gradient(ellipse at 60% 50%, transparent 45%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.title-layout { position: relative; height: 100vh; display: flex; align-items: center; }
+
+/* le menu à gauche */
+.menu { margin-left: max(5vw, 24px); width: min(340px, 90vw); }
+.menu ul { list-style: none; margin: 0; padding: 0; }
+.menu a {
+  display: block; padding: 12px 24px; text-decoration: none;
+  font: 400 clamp(1.6rem, 3vw, 2.1rem)/1 var(--font-label); letter-spacing: 4px; text-transform: uppercase;
+  color: #b4b4c0; border-left: 4px solid transparent;
+}
+/* le bouton survolé / sélectionné : barre rouge, comme dans le menu du jeu */
+.menu a:hover, .menu a:focus-visible {
+  background: var(--red); color: #fff; border-left-color: #fff; outline: none;
+}
+.menu .new { margin-left: 10px; font-size: 0.55em; letter-spacing: 2px; color: var(--red); vertical-align: middle; }
+.menu a:hover .new, .menu a:focus-visible .new { color: #fff; }
+
+/* le grand titre (police Edo SZ) au centre */
+.title-box { position: absolute; left: 40%; right: 3%; top: 50%; transform: translateY(-50%); pointer-events: none; }
+.title-text {
+  margin: 0; font: 400 clamp(3.4rem, 9vw, 8.5rem)/0.95 var(--font-title); text-transform: uppercase; letter-spacing: 2px;
+  color: #fff; text-shadow: 0 3px 0 #000, 0 0 18px rgba(0, 0, 0, 0.8);
+}
+.title-sub {
+  margin: 16px 0 0; font: 400 clamp(1.1rem, 2vw, 1.6rem)/1.2 var(--font-label); letter-spacing: 5px; text-transform: uppercase;
+  color: #e4e4ea; text-shadow: 0 2px 4px #000;
+}
+/* petite animation à chaque changement de titre */
+.title-box.swap .title-text, .title-box.swap .title-sub { animation: titleIn 0.3s ease-out; }
+@keyframes titleIn { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: none; } }
+
+.hint, .legal { position: fixed; margin: 0; font: 400 15px/1 var(--font-label); letter-spacing: 3px; text-transform: uppercase; color: #8d8d99; }
+.hint { left: max(5vw, 24px); bottom: 24px; }
+.legal { right: 20px; bottom: 24px; font-size: 13px; letter-spacing: 2px; text-align: right; max-width: 40vw; line-height: 1.3; }
+.noscript { position: fixed; top: 20px; left: 20px; }
+
+
+/* ---------- 4. Pages internes ---------- */
+/* barre du haut : minimaliste */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  padding: 10px 28px;
+  background: rgba(10, 10, 14, 0.92); border-bottom: 1px solid var(--line);
+}
+.topbar a { text-decoration: none; }
+.back {
+  font: 400 19px/1 var(--font-label); letter-spacing: 3px; text-transform: uppercase;
+  padding: 9px 16px; border: 1px solid var(--line);
+}
+.back:hover, .back:focus-visible { border-color: #fff; }
+.topbar nav { display: flex; flex-wrap: wrap; }
+.topbar nav a {
+  padding: 10px 16px; font: 400 20px/1 var(--font-label); letter-spacing: 3px; text-transform: uppercase;
+  color: var(--muted); border-bottom: 3px solid transparent;
+}
+.topbar nav a:hover, .topbar nav a:focus-visible { color: #fff; border-bottom-color: var(--line); }
+/* la page actuelle = l'onglet sélectionné = rouge */
+.topbar nav a[aria-current="page"] { color: #fff; border-bottom-color: var(--red); }
+
+/* contenu de la page */
+.page { width: min(1100px, 100% - 40px); margin: 0 auto; padding: 96px 0 40px; }
+.page-head { margin-bottom: 26px; }
+.page-head h1 { margin: 0; font: 400 clamp(2.4rem, 6vw, 3.8rem)/1 var(--font-title); text-transform: uppercase; letter-spacing: 2px; }
+.page-head p { margin: 6px 0 0; font: 400 20px/1 var(--font-label); letter-spacing: 4px; text-transform: uppercase; color: var(--muted); }
+.page-foot { margin: 20px 0 0; font-size: 14px; color: var(--muted); }
+
+/* un panneau : noir semi-transparent, bordure fine */
+.panel {
+  background: var(--panel); border: 1px solid var(--line);
+  padding: 22px 26px 24px; margin-bottom: 20px;
+}
+.panel-title {
+  margin: 0 0 16px; padding-bottom: 10px;
+  font: 400 24px/1 var(--font-label); letter-spacing: 3px; text-transform: uppercase;
+  border-bottom: 1px solid var(--line);
+}
+
+.two-columns { display: grid; grid-template-columns: 360px 1fr; gap: 20px; align-items: start; }
+.two-columns > * { min-width: 0; }
+
+
+/* ---------- 5. Composants ---------- */
+/* fiche profil : une ligne par information */
+.facts { margin: 0; }
+.fact { padding: 11px 0; border-bottom: 1px solid var(--line-soft); }
+.fact:last-child { border-bottom: 0; }
+.fact dt { font: 400 17px/1 var(--font-label); letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+.fact dd { margin: 0; font-weight: 600; line-height: 1.35; }
+
+/* liste de lignes (hobbies, références) */
+.rows { list-style: none; margin: 0; padding: 0; }
+.rows li { display: flex; flex-direction: column; gap: 2px; padding: 12px 0; border-bottom: 1px solid var(--line-soft); }
+.rows li:first-child { padding-top: 0; }
+.rows li:last-child { border-bottom: 0; padding-bottom: 0; }
+.rows strong { font: 400 22px/1.1 var(--font-label); letter-spacing: 2px; text-transform: uppercase; }
+.rows a { color: var(--text); text-underline-offset: 3px; }
+
+.text p:last-child { margin-bottom: 0; }
+
+
+/* ---------- 5b. Petits éléments des autres pages ---------- */
+.two-columns.even { grid-template-columns: 1fr 1fr; }
+
+/* boutons : rectangle à fine bordure (pas de rouge : le rouge est pour la sélection) */
+.button {
+  display: inline-block; cursor: pointer; text-decoration: none;
+  font: 400 20px/1 var(--font-label); letter-spacing: 3px; text-transform: uppercase;
+  color: var(--text); background: transparent; border: 1px solid rgba(255, 255, 255, 0.5); padding: 12px 22px;
+}
+.button:hover, .button:focus-visible { background: #fff; color: #000; border-color: #fff; }
+
+/* petit libellé gris au-dessus d'une valeur (contact) */
+.label { font: 400 17px/1 var(--font-label); letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+
+/* page Skills : liste de capacités */
+.abilities { list-style: none; margin: 0; padding: 0; }
+.abilities li { display: grid; grid-template-columns: 1fr 150px 44px; align-items: center; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--line-soft); }
+.abilities li:last-child { border-bottom: 0; }
+.ability-level { font: 400 20px/1 var(--font-label); letter-spacing: 2px; text-align: right; color: var(--muted); }
+.meter { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; }
+.meter i { height: 10px; background: rgba(255, 255, 255, 0.16); }
+.meter i.on { background: #e8e8ee; }
+.rows li > strong + span { color: var(--muted); }
+
+/* page Experience : une ligne par étape, dates à gauche */
+.entry { display: grid; grid-template-columns: 190px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line-soft); }
+.entry:first-child { padding-top: 0; }
+.entry:last-child { border-bottom: 0; padding-bottom: 0; }
+.entry-dates { margin: 0; font: 400 20px/1.3 var(--font-label); letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+.entry h3 { margin: 0 0 4px; font: 400 25px/1.15 var(--font-label); letter-spacing: 2px; text-transform: uppercase; }
+.entry ul { margin: 8px 0; padding-left: 1.2em; }
+.entry p { margin: 0 0 4px; }
+
+/* page Projects : journal des Substories */
+.log { display: grid; grid-template-columns: 400px 1fr; gap: 20px; align-items: start; }
+.log > * { min-width: 0; }
+.log .panel { margin-bottom: 0; }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.filter {
+  font: 400 17px/1 var(--font-label); letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+  color: var(--text); background: transparent; border: 1px solid var(--line); padding: 8px 12px;
+}
+.filter:hover { border-color: #fff; }
+.filter.selected { background: var(--red); border-color: var(--red); color: #fff; }
+
+.log-items { list-style: none; margin: 0 -26px; padding: 0; border-top: 1px solid var(--line-soft); }
+.log-item {
+  display: flex; align-items: flex-start; gap: 16px; width: 100%; text-align: left; cursor: pointer;
+  font: inherit; color: var(--text); background: transparent; border: 0; border-bottom: 1px solid var(--line-soft);
+  padding: 14px 26px;
+}
+.log-item:hover { background: rgba(255, 255, 255, 0.08); }
+.log-item.selected { background: var(--red); color: #fff; }
+.log-number { font: 400 28px/1 var(--font-label); letter-spacing: 2px; color: var(--muted); min-width: 34px; }
+.log-item.selected .log-number { color: #fff; }
+.log-text { display: flex; flex-direction: column; gap: 3px; }
+.log-title { font-weight: 700; line-height: 1.3; }
+.log-status { font-size: 14px; color: var(--muted); }
+.log-item.selected .log-status { color: #ffe0e2; }
+
+.detail-number { margin: 0 0 4px; font: 400 18px/1 var(--font-label); letter-spacing: 4px; text-transform: uppercase; color: var(--muted); }
+.detail-title { margin: 0 0 6px; font: 400 clamp(1.9rem, 4vw, 2.8rem)/1.1 var(--font-label); letter-spacing: 2px; text-transform: uppercase; }
+.detail-sub { margin: 22px 0 8px; font: 400 22px/1 var(--font-label); letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+#detail .facts { margin-top: 14px; border-top: 1px solid var(--line-soft); }
+.screenshot { margin: 16px 0 20px; }
+.screenshot img { width: 100%; display: block; border: 1px solid var(--line); }
+.bullets { margin: 0 0 6px; padding-left: 1.2em; }
+.techs { list-style: none; margin: 0 0 20px; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.techs li { font-size: 15px; font-weight: 600; padding: 4px 10px; border: 1px solid var(--line); }
+
+/* page Contact */
+.narrow { max-width: 560px; }
+
+/* page CV */
+.cv-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 16px; }
+.cv-frame { display: block; width: 100%; height: 72vh; border: 1px solid var(--line); background: #333; }
+
+
+/* ---------- 6. Petits écrans ---------- */
+@media (max-width: 860px) {
+  .two-columns, .two-columns.even, .log { grid-template-columns: 1fr; }
+  .entry { grid-template-columns: 1fr; gap: 6px; }
+  .abilities li { grid-template-columns: 1fr 90px 40px; }
+  .topbar { padding: 8px 12px; }
+  .topbar nav a { padding: 8px 10px; font-size: 18px; letter-spacing: 2px; }
+  .page { padding-top: 130px; }
+
+  /* écran titre : le titre passe au-dessus du menu */
+  .title-layout { flex-direction: column-reverse; justify-content: center; align-items: flex-start; gap: 24px; }
+  .title-box { position: static; transform: none; margin: 0 24px; }
+  .title-text { font-size: clamp(3rem, 14vw, 5rem); }
+  .menu { margin-left: 0; width: 100%; padding-right: 24px; }
+  .legal { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+.rows + p { margin-top: 20px; }

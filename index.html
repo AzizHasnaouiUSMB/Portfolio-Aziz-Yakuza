@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abdelaziz Hasnaoui - Portfolio</title>
+  <meta name="description" content="Portfolio of Abdelaziz Hasnaoui, BUT Informatique student (data track): about, skills, experience, projects and contact.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="title-screen">
+
+  <!-- vidéo en boucle (sans son) : une rue de Kamurocho la nuit -->
+  <video class="bg-video" autoplay muted loop playsinline poster="assets/video/poster.jpg" aria-hidden="true">
+    <source src="assets/video/kamurocho-loop.mp4" type="video/mp4">
+  </video>
+  <div class="title-shade" aria-hidden="true"></div>
+
+  <h1 class="sr-only">Abdelaziz Hasnaoui - Portfolio</h1>
+
+  <main class="title-layout">
+    <!-- le menu : chaque lien a un titre (data-title) et un sous-titre (data-sub)
+         que home.js affiche au centre quand on survole le lien -->
+    <nav class="menu" aria-label="Main menu">
+      <ul>
+        <li><a href="about.html" data-title="Abdelaziz Hasnaoui" data-sub="Data and information systems - BUT Informatique">About me</a></li>
+        <li><a href="skills.html" data-title="Skills" data-sub="SQL - Power BI - C# - Web - Scrum">Skills</a></li>
+        <li><a href="experience.html" data-title="The story so far" data-sub="University projects and work experience">Experience</a></li>
+        <li><a href="projects.html" data-title="Substories" data-sub="Four case files, filter by technology">Projects <span class="new">NEW</span></a></li>
+        <li><a href="contact.html" data-title="Let's make a deal" data-sub="Internship from 5 April 2027">Contact</a></li>
+        <li><a href="cv.html" data-title="My CV" data-sub="Read it here, then download the PDF">CV</a></li>
+      </ul>
+    </nav>
+
+    <!-- le grand titre au centre -->
+    <div class="title-box swap" id="titleBox" aria-hidden="true">
+      <p class="title-text" id="titleText">Abdelaziz Hasnaoui</p>
+      <p class="title-sub" id="titleSub">Data and information systems - BUT Informatique</p>
+    </div>
+  </main>
+
+  <p class="hint">Hover or use the arrow keys, then click or press Enter</p>
+  <p class="legal">Unofficial fan tribute made for a school project (R3.12, IUT Annecy). Not affiliated with SEGA.</p>
+
+  <script src="video.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>
